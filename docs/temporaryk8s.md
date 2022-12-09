@@ -13,3 +13,9 @@ scp -i ~/.ssh/keypair.pem ubuntu@ec2-13-212-195-65.ap-southeast-1.compute.amazon
 ssh -i <keyfile> <remoteAdress> 'sudo bash -s' < <shell_file.sh>
 ```
 4. Copy the `join.sh` file to the slave machine, then run the bash file `slave.sh` using the above command line. 
+5. Deploy the webapp. Only curl at local master machine.
+```
+kubectl create deployment my-flask-app --image=poroko/flask-demo-app
+kubectl expose deployment my-flask-app --port=8080 --target-port=5000 --type=NodePort
+kubectl get service my-flask-app
+```
