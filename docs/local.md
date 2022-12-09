@@ -1,7 +1,9 @@
 Setup
 =====
 
-This is for the local machine aka your laptop/desktop, not EC2 VM. The local machine should have Ubuntu-family distros.
+This setup for the local machine aka your laptop/desktop, not EC2 VM. The local machine should have Ubuntu-family distros.
+
+All of these commands are executed at the root folder of this project AKA where the main/first readme.md stays.
 
 ## AWS CLI 2
 
@@ -35,14 +37,30 @@ aws ec2 create-key-pair --key-name general_keypair --query 'KeyMaterial' --outpu
 Create
 ======
 
+All of these commands are executed at the root folder of this project AKA where the main/first readme.md stays.
+
+These commands MUST be executed on the local machine aka your laptop/desktop, not EC2 VM. The local machine should have Ubuntu-family distros.
+
 ## Security Group
 
 ```shell
 python experiments/create_security_group.py
 ```
 
-## 1 Master and 3 Slaves
+## 1 Master and n Slaves
 
 ```shell
 python experiments/create_t2micro.py
 ```
+
+For example, if you want 4 slaves, change `number_slave = 1` to `number_slave = 4`.
+
+## K8S
+
+```shell
+python experiments/generate_cmds.py > setup_cmds.sh
+# Maybe you should copy and paste each line then run one by one in setup_cmds.sh 
+bash setup_cmds.sh
+```
+
+
