@@ -53,7 +53,11 @@ python experiments/create_security_group.py
 python experiments/create_t2micro.py
 ```
 
-For example, if you want 4 slaves, change `number_slave = 1` to `number_slave = 4`.
+By default, the number of slave nodes is 1. The number of worker nodes can be changed by passing the argument `--worker_number`. For example, if you want 3 slaves:
+
+```shell
+python experiments/create_t2micro.py --worker_number=3
+```
 
 ## K8S
 
