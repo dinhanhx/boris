@@ -1,7 +1,7 @@
 apt-get update -y
 hostnamectl set-hostname master
 # configure the hosts file
-echo "slaveIP slave" >> /etc/hosts
+# echo "slaveIP slave" >> /etc/hosts
 echo "masterIP master" >> /etc/hosts
 # disable swap memory
 swapoff -a
