@@ -1,5 +1,11 @@
+import argparse
 import boto3
 from botocore.exceptions import ClientError
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--worker_number", help="Number of worker nodes.", default=1)
+args = parser.parse_args()
 
 ec2 = boto3.client('ec2')
 group_name = 'all traffic group'
@@ -8,7 +14,7 @@ image_id = 'ami-02045ebddb047018b'
 instance_types = ['t2.medium', 't2.micro']
 key_name = 'general_keypair'
 machine_names = ['master', 'slave']
-number_slave = 1  # Change to whatever number you desire
+number_slave = int(args.worker_number)  # Change to whatever number you desire
 
 try:
     # Retrieve security group id
